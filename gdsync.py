@@ -19,6 +19,7 @@ import io
 import json
 import pickle
 import os.path
+import re
 import sys
 import tarfile
 import tempfile
@@ -200,8 +201,11 @@ class DriveSyncer:
 
         resp = self.service.files().list(orderBy='name desc', q=query,
                                         fields='nextPageToken, files(id, name)', corpora='user').execute()
+        prefix = '%s-' % project_name
         for file in resp.get('files', []):
-            return file.get('id'), file.get('name')
+            name = file.get('name')
+            if [prefix, ''] == re.split(r'\d{8}-\d{6}\.tar\.gz', name):
+                return file.get('id'), name
 
         return None, None
 
