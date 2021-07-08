@@ -82,12 +82,13 @@ function bootstrapCockpit() {
 function bootstrap() {
     case "$1" in
         s|sys|system)
-            bootstrapSystem()
+            bootstrapSystem
         ;;
         u|usr|user)
-            bootstrapAccount()
+            bootstrapAccount
         ;;
         *)
+            echo "Don't know what to do with that one"
         ;;
     esac
 }
