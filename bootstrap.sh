@@ -18,6 +18,7 @@ function bootstrapSystem() {
 
 function bootstrapAccount() {
     wget -O ~/.screenrc https://raw.githubusercontent.com/threeguys/slashbin/main/screenrc
+    wget -O ~/.nanorc https://raw.githubusercontent.com/threeguys/slashbin/main/nanorc
 }
 
 function bootstrapDocker() {
